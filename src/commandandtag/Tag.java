@@ -2,14 +2,11 @@ package commandandtag;
 
 public class Tag implements Comparable<Tag> {
     private final int id;
+    private final boolean valid;
 
     public Tag(int number) {
-        if (number < 0 || number > 9) {
-            this.id = 0;
-            fail(number);
-        } else {
-            this.id = number;
-        }
+        this.id = number;
+        this.valid = number >= 1 && number <= 9;
     }
 
     private void fail(int number) {
@@ -46,13 +43,16 @@ public class Tag implements Comparable<Tag> {
         return id;
     }
 
-    public void execute() {
-        if (id != 0) {
+    public Tag execute() {
+        if (valid) {
             AvailableTags.addTag(this);
+        } else if(id == 0){
+            AvailableTags.getMinTag();
         }
+        return this;
     }
 
-    public void create() {
-        AvailableTags.getMinTag();
+    public Tag create() {
+        return AvailableTags.getMinTag();
     }
 }

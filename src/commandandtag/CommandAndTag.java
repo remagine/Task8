@@ -1,7 +1,5 @@
 package commandandtag;
 
-import commandandnumber.CommandAndNumber;
-
 public class CommandAndTag {
     private final Command command;
     private final Tag tag;
@@ -11,14 +9,12 @@ public class CommandAndTag {
         this.tag = tag;
     }
 
-    public void executeCommand() {
+    public Tag executeCommand() {
         switch (command) {
             case EXECUTE:
-                tag.execute();
-                break;
+                return tag.execute();
             case CREATE:
-                tag.create();
-                break;
+                return tag.create();
             default:
                 throw new IllegalArgumentException();
         }

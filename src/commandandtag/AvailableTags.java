@@ -11,11 +11,12 @@ public class AvailableTags {
         }
     }
 
-    public static void getMinTag() {
+    public static Tag getMinTag() {
         Tag minTag = availableTags.pollFirst();
         if (minTag == null) {
-            FailHistory.addFailMap(0);
+            minTag = new Tag(0);
         }
+        return minTag;
     }
 
     public static void addTag(Tag tag) {

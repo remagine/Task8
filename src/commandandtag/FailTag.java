@@ -1,9 +1,6 @@
 package commandandtag;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.StringJoiner;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class FailTag implements Comparable<FailTag> {
     private final Integer tagNum;
