@@ -17,6 +17,29 @@ public class FailHistory {
     }
 
     public static void print() {
+        Map<Tag, Integer> copiedMap = new HashMap<>(FAIL_HISTORY);
+        copiedMap.remove(new Tag(0));
+
+        TreeSet<FailTag> failTags = new TreeSet<>();
+        copiedMap.forEach((key, value) -> failTags.add(new FailTag(key, value)));
+
+        System.out.println(failTags);
+    }
+
+    /*public static void addFailMap(int number) {
+        Integer failCnt = FAIL_MAP.putIfAbsent(number, 1);
+        if (failCnt != null) {
+            FAIL_MAP.put(number, ++failCnt);
+        }
+    }*/
+
+    public static void printCreateFailCnt() {
+        Map<Tag, Integer> copiedMap = new HashMap<>(FAIL_HISTORY);
+        int createFailCnt = copiedMap.getOrDefault(new Tag(0), 0);
+        System.out.println(createFailCnt);
+    }
+
+    /*public static void print() {
         Map<Integer, Integer> copiedMap = new HashMap<>(FAIL_MAP);
         copiedMap.remove(0);
 
@@ -37,5 +60,5 @@ public class FailHistory {
         Map<Integer, Integer> copiedMap = new HashMap<>(FAIL_MAP);
         int createFailCnt = copiedMap.getOrDefault(0, 0);
         System.out.println(createFailCnt);
-    }
+    }*/
 }

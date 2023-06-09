@@ -3,11 +3,11 @@ package commandandtag;
 import java.util.StringJoiner;
 
 public class FailTag implements Comparable<FailTag> {
-    private final Integer tagNum;
+    private final Tag tag;
     private final Integer failCnt;
 
-    public FailTag(Integer tagNum, Integer failCnt) {
-        this.tagNum = tagNum;
+    public FailTag(Tag tag, Integer failCnt) {
+        this.tag = tag;
         this.failCnt = failCnt;
     }
 
@@ -15,7 +15,7 @@ public class FailTag implements Comparable<FailTag> {
     public int compareTo(FailTag o) {
         int result = o.failCnt.compareTo(failCnt);
         if(result == 0){
-            result = tagNum.compareTo(o.tagNum);
+            result = tag.compareTo(o.tag);
         }
         return result;
     }
@@ -23,7 +23,7 @@ public class FailTag implements Comparable<FailTag> {
     @Override
     public String toString() {
         return new StringJoiner(", ", FailTag.class.getSimpleName() + "[", "]")
-                .add("tagNum=" + tagNum)
+                .add("tag=" + tag)
                 .add("failCnt=" + failCnt)
                 .toString();
     }

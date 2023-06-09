@@ -1,5 +1,7 @@
+import commandandtag.AvailableTags;
 import commandandtag.Command;
 import commandandtag.CommandAndTag;
+import commandandtag.FailHistory;
 import commandandtag.Tag;
 
 import java.io.*;
@@ -52,7 +54,9 @@ public class Main {
                 CommandAndTag commandAndTag = new CommandAndTag(command, tag);
                 commandAndTag.executeCommand();
             }
-            Tag.printHistory();
+            FailHistory.printCreateFailCnt();
+            AvailableTags.print();
+            FailHistory.print();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

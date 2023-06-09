@@ -1,5 +1,7 @@
 package commandandtag;
 
+import java.util.StringJoiner;
+
 public class Tag implements Comparable<Tag> {
     private final int id;
     private final boolean valid;
@@ -9,12 +11,8 @@ public class Tag implements Comparable<Tag> {
         this.valid = number >= 1 && number <= 9;
     }
 
-    private void fail(int number) {
-        FailHistory.addFailMap(number);
-    }
-
     public void fail() {
-        FailHistory.addFailMap(id);
+        FailHistory.addFailHistory(this);
     }
 
     public static void printHistory() {
@@ -53,5 +51,10 @@ public class Tag implements Comparable<Tag> {
 
     public void create() {
         AvailableTags.getMinTag();
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(id);
     }
 }
