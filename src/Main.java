@@ -50,7 +50,7 @@ public class Main {
                 }
                 Tag tag = new Tag(number);
                 CommandAndTag commandAndTag = new CommandAndTag(command, tag);
-                Tag doneTag = commandAndTag.executeCommand();
+                commandAndTag.executeCommand();
             }
             Tag.printHistory();
         } catch (IOException e) {

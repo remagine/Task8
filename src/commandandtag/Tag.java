@@ -43,16 +43,15 @@ public class Tag implements Comparable<Tag> {
         return id;
     }
 
-    public Tag execute() {
+    public void execute() {
         if (valid) {
             AvailableTags.addTag(this);
-        } else if(id == 0){
-            AvailableTags.getMinTag();
+        } else {
+            fail();
         }
-        return this;
     }
 
-    public Tag create() {
-        return AvailableTags.getMinTag();
+    public void create() {
+        AvailableTags.getMinTag();
     }
 }

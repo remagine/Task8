@@ -2,6 +2,7 @@ package commandandtag;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class FailHistory {
@@ -18,7 +19,11 @@ public class FailHistory {
     public static void print() {
         Map<Integer, Integer> copiedMap = new HashMap<>(FAIL_MAP);
         copiedMap.remove(0);
-        System.out.println(copiedMap);
+
+        TreeSet<FailTag> failTags = new TreeSet<>();
+        copiedMap.forEach((key, value) -> failTags.add(new FailTag(key, value)));
+
+        System.out.println(failTags);
     }
 
     public static void addFailMap(int number) {

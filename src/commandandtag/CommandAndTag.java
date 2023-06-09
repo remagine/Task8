@@ -9,12 +9,14 @@ public class CommandAndTag {
         this.tag = tag;
     }
 
-    public Tag executeCommand() {
+    public void executeCommand() {
         switch (command) {
             case EXECUTE:
-                return tag.execute();
+                tag.execute();
+                break;
             case CREATE:
-                return tag.create();
+                tag.create();
+                break;
             default:
                 throw new IllegalArgumentException();
         }
