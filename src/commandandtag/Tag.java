@@ -1,7 +1,5 @@
 package commandandtag;
 
-import java.util.StringJoiner;
-
 public class Tag implements Comparable<Tag> {
     private final int id;
     private final boolean valid;
@@ -15,12 +13,22 @@ public class Tag implements Comparable<Tag> {
         FailHistory.addFailHistory(this);
     }
 
-    public static void printHistory() {
-        FailHistory.printCreateFailCnt();
-        AvailableTags.print();
-        FailHistory.print();
+    public void execute() {
+        if (valid) {
+            AvailableTags.addTag(this);
+        } else {
+            fail();
+        }
     }
 
+    public void create() {
+        AvailableTags.getMinTag();
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(id);
+    }
     @Override
     public int compareTo(Tag o) {
         return Integer.compare(id, o.id);
@@ -39,22 +47,5 @@ public class Tag implements Comparable<Tag> {
     @Override
     public int hashCode() {
         return id;
-    }
-
-    public void execute() {
-        if (valid) {
-            AvailableTags.addTag(this);
-        } else {
-            fail();
-        }
-    }
-
-    public void create() {
-        AvailableTags.getMinTag();
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(id);
     }
 }
